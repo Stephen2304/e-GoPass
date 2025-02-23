@@ -13,9 +13,12 @@ return new class extends Migration
     {
         Schema::create('e_go_passes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('voyageur_id')->constrained('voyageurs');
+            $table->string('numero')->unique();
             $table->string('type');
             $table->string('statut');
+            $table->dateTime('date_generation');
+            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('voyageur_id')->constrained('voyageurs');
             $table->timestamps();
         });
     }

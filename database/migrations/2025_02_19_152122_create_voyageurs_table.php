@@ -13,15 +13,20 @@ return new class extends Migration
     {
         Schema::create('voyageurs', function (Blueprint $table) {
             $table->id();
+            $table->string('type_vol');
+            $table->bigInteger('numero_eGoPASS');
             $table->string('nom');
-            $table->string('postnom')->nullable();
             $table->string('prenom');
+            $table->string('post_nom');
             $table->string('nationalite');
-            $table->string('passport_num')->unique();
-            $table->date('date_delivrance');
-            $table->string('tel');
-            $table->string('email')->nullable();
-            $table->string('adresse')->nullable();
+            $table->integer('numero_passport');
+            $table->string('compagnie_aerienne');
+            $table->string('numero_vol');
+            $table->string('provenance');
+            $table->string('destination');
+            $table->string('telephone');
+            $table->string('email');
+            $table->string('adresse_residence');
             $table->timestamps();
         });
     }

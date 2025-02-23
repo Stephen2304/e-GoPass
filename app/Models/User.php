@@ -5,6 +5,8 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Paiement;
 use App\Models\Transaction;
+use Laravel\Sanctum\HasApiTokens;
+use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -12,28 +14,19 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles;
 
     /**
      * The attributes that are mass assignable.
      *
-     * @var list<string>
+     * @var array
      */
     protected $fillable = ['nom', 'prenom', 'email', 'role', 'password', 'telephone'];
-
-
-    public function paiements() {
-        return $this->hasMany(Paiement::class);
-    }
-    
-    public function transactions() {
-        return $this->hasMany(Transaction::class);
-    }
 
     /**
      * The attributes that should be hidden for serialization.
      *
-     * @var list<string>
+     * @var array
      */
     protected $hidden = [
         'password',
@@ -41,15 +34,38 @@ class User extends Authenticatable
     ];
 
     /**
-     * Get the attributes that should be cast.
+     * The attributes that should be cast.
      *
-     * @return array<string, string>
+     * @var array
      */
-    protected function casts(): array
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
+
+    /**
+     * Get the user's payments.
+     */
+    public function paiements()
     {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
+        return $this->hasMany(Paiement::class);
+    }
+
+    /**
+     * Get the user's transactions.
+     */
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
+    }
+
+    /**
+     * Check if the user has a specific role.
+     *
+     * @param string $role
+     * @return bool
+     */
+    public function hasRole($role)
+    {
+        return $this->roles()->where('name', $role)->exists();
     }
 }

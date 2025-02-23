@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('transactions', function (Blueprint $table) {
+        Schema::create('abonnes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('utilisateur_id')->constrained('utilisateurs');
-            $table->foreignId('paiement_id')->constrained('paiements');
-            $table->string('type');
-            $table->string('statut');
+            $table->string('nom');
+            $table->string('prenom');
+            $table->string('email')->unique();
+            $table->string('ville');
+            $table->string('telephone')->nullable(); // Si le téléphone est optionnel
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('transactions');
+        Schema::dropIfExists('abonnes');
     }
-};
+}; 

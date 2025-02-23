@@ -1,0 +1,346 @@
+name: Abonnés
+description: ''
+endpoints:
+  -
+    httpMethods:
+      - GET
+    uri: api/abonnes
+    metadata:
+      groupName: Abonnés
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Liste des abonnés'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: 'http://localhost:3000'
+          access-control-allow-credentials: 'true'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/abonnes
+    metadata:
+      groupName: Abonnés
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Créer un nouvel abonné'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      nom:
+        name: nom
+        description: 'Must not be greater than 255 characters.'
+        required: true
+        example: b
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      prenom:
+        name: prenom
+        description: 'Must not be greater than 255 characters.'
+        required: true
+        example: 'n'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      email:
+        name: email
+        description: 'Must be a valid email address. Must not be greater than 255 characters.'
+        required: true
+        example: ashly64@example.com
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      ville:
+        name: ville
+        description: 'Must not be greater than 255 characters.'
+        required: true
+        example: v
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      nom: b
+      prenom: 'n'
+      email: ashly64@example.com
+      ville: v
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/abonnes/{id}'
+    metadata:
+      groupName: Abonnés
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Afficher un abonné'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the abonne.'
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: architecto
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: 'http://localhost:3000'
+          access-control-allow-credentials: 'true'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PUT
+      - PATCH
+    uri: 'api/abonnes/{id}'
+    metadata:
+      groupName: Abonnés
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Mettre à jour un abonné'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the abonne.'
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: architecto
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      nom:
+        name: nom
+        description: 'Must not be greater than 255 characters.'
+        required: true
+        example: b
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      prenom:
+        name: prenom
+        description: 'Must not be greater than 255 characters.'
+        required: true
+        example: 'n'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      email:
+        name: email
+        description: 'Must be a valid email address. Must not be greater than 255 characters.'
+        required: true
+        example: ashly64@example.com
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      ville:
+        name: ville
+        description: 'Must not be greater than 255 characters.'
+        required: true
+        example: v
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      nom: b
+      prenom: 'n'
+      email: ashly64@example.com
+      ville: v
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/abonnes/{id}'
+    metadata:
+      groupName: Abonnés
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Supprimer un abonné'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the abonne.'
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: architecto
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/abonnes/{id}/download'
+    metadata:
+      groupName: Abonnés
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: "Télécharger le PDF d'un abonné"
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the abonne.'
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: architecto
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: 'http://localhost:3000'
+          access-control-allow-credentials: 'true'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []

@@ -10,11 +10,29 @@ class Voyageur extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nom', 'postnom', 'prenom', 'nationalite', 'passport_num', 'date_delivrance', 'tel', 'email', 'adresse'];
+    protected $fillable = [
+        'nom',
+        'prenom',
+        'email',
+        'telephone',
+        'type_vol',
+        'numero_eGoPASS',
+        'post_nom',
+        'nationalite',
+        'numero_passport',
+        'compagnie_aerienne',
+        'numero_vol',
+        'provenance',
+        'destination',
+        'adresse_residence'
+    ];
 
     public function eGoPasses() {
         return $this->hasMany(EGoPass::class);
     }
 
-    
+    public function abonne()
+    {
+        return $this->belongsTo(Abonne::class);
+    }
 }

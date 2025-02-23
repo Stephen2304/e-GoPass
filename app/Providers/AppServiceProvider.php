@@ -2,9 +2,10 @@
 
 namespace App\Providers;
 
-use Illuminate\Auth\Notifications\ResetPassword;
-use Illuminate\Support\Facades\Response;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Response;
+use Illuminate\Auth\Notifications\ResetPassword;
+
 
 class AppServiceProvider extends ServiceProvider
 {

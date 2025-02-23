@@ -13,11 +13,12 @@ return new class extends Migration
     {
         Schema::create('paiements', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('utilisateur_id')->constrained('utilisateurs');
             $table->decimal('montant', 10, 2);
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('mode_paiement');
             $table->string('reference')->unique();
             $table->string('statut');
+            $table->foreignId('e_go_passes_id')->nullable()->constrained('e_go_passes')->onDelete('set null');
             $table->timestamps();
         });
     }

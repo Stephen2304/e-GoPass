@@ -2,15 +2,19 @@
 
 namespace Database\Factories;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Facades\Hash;
+use App\Models\User;
 use Illuminate\Support\Str;
+use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
  */
 class UserFactory extends Factory
 {
+    protected $model = User::class;
+
     /**
      * The current password being used by the factory.
      */
@@ -24,11 +28,10 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->name(),
-            'email' => fake()->unique()->safeEmail(),
-            'email_verified_at' => now(),
-            'password' => static::$password ??= Hash::make('password'),
-            'remember_token' => Str::random(10),
+            'nom' => $this->faker->lastName(),
+            'prenom' => $this->faker->firstName(),
+            'email' => $this->faker->unique()->safeEmail(),
+            'password' => Hash::make('password'),
         ];
     }
 
@@ -40,5 +43,21 @@ class UserFactory extends Factory
         return $this->state(fn (array $attributes) => [
             'email_verified_at' => null,
         ]);
+    }
+
+    public function admin(): static
+    {
+        return $this->afterCreating(function (User $user) {
+            $adminRole = Role::firstOrCreate(['name' => 'admin', 'guard_name' => 'web']);
+            $user->assignRole($adminRole);
+        });
+    }
+
+    public function super_admin(): static
+    {
+        return $this->afterCreating(function (User $user) {
+            $default = Role::firstOrCreate(['name' => 'super-admin', 'guard_name' => 'web']);
+            $user->assignRole($default);
+        });
     }
 }
