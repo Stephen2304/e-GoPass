@@ -26,7 +26,7 @@ class VoyageurRequest extends FormRequest
             'provenance' => 'required|string|max:255',
             'destination' => 'required|string|max:255',
             'telephone' => 'required|string|max:15',
-            'email' => 'required|email|max:255',
+            'email' => 'required|email',
             'adresse_residence' => 'required|string|max:255',
         ];
     }

@@ -32,6 +32,7 @@ class Kernel extends HttpKernel
             EnsureFrontendRequestsAreStateful::class,
             'throttle:api',
             SubstituteBindings::class,
+            \App\Http\Middleware\SetSecurityHeaders::class,
         ],
     ];
 }
